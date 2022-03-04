@@ -1,10 +1,27 @@
-import React, { useState } from "react";
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "../firebase";
+import React, { useState, useEffect } from "react";
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+  onAuthStateChanged,
+} from "../firebase";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 import GoogleLogoSVG from "../SVG/google-logo.svg";
 
 function Login() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        navigate("/");
+      }
+    });
+  }, []);
+
   const [teacherStudent, setTeacherStudent] = useState({
     english: "Teacher",
     marathi: "शिक्षक",

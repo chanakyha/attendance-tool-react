@@ -1,5 +1,10 @@
 import { initializeApp } from "firebase/app";
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+  onAuthStateChanged,
+} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD6eK0JRZR7fnm2GTBCmV1TbiY-pWZ9p84",
@@ -15,4 +20,10 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-export { app, GoogleAuthProvider, getAuth, signInWithPopup };
+export {
+  app,
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+  onAuthStateChanged,
+};
