@@ -6,6 +6,8 @@ import "bootstrap/dist/js/bootstrap.min.js";
 
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -15,6 +17,17 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Dashboard />} />
         </Routes>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={4000}
+          hideProgressBar={true}
+          newestOnTop={true}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </div>
     </BrowserRouter>
   );
