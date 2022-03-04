@@ -1,3 +1,11 @@
+# Steps to Run React on your LocalServer
+
+- Install Node.JS from the official website, if installed check the version and update to the latest one
+- Open Vscode, in that Open up your Terminal
+- type "npm i" {without quotes} - this is to install all the dependencies like firebase and stuffs
+- then, type "npm start" {without quotes} - to start the development server on localhost:3000, this react development server have hot reload feature also
+- after completing the work for the day, dont forget to close the server bu Ctrl+C before closing VSCode
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
