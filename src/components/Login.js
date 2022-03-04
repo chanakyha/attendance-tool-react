@@ -1,9 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
 
 import GoogleLogoSVG from "../SVG/google-logo.svg";
 
 function Login() {
+  const [teacherStudent, setTeacherStudent] = useState({
+    english: "Teacher",
+    marathi: "शिक्षक",
+  });
+  const [googleLoginBtn, setGoogleLoginBtn] = useState(1);
+
+  const [teacherTab, setTeacherTab] = useState("true");
+  const [studentTab, setStudentTab] = useState("false");
+
+  const onTeacherLoginScreen = () => {
+    setTeacherStudent({
+      english: "Teacher",
+      marathi: "शिक्षक",
+    });
+
+    setTeacherTab("true");
+    setStudentTab("false");
+    setGoogleLoginBtn(1);
+  };
+  const onStudentLoginScreen = () => {
+    setTeacherStudent({
+      english: "Student",
+      marathi: "विद्यार्थी ",
+    });
+
+    setTeacherTab("false");
+    setStudentTab("true");
+    setGoogleLoginBtn(0);
+  };
+
   return (
     <div className="login">
       <div className="container">
@@ -22,17 +52,26 @@ function Login() {
 
         <div className="form-content">
           <h5 className="form-title-en">
-            Welcome! Please log in with teacher ID to continue
+            Welcome! Please log in with {teacherStudent.english} ID to continue
           </h5>
           <h5 className="form-title-mr">
-            स्वागत आहे! कृपया सुरू करण्यासाठी शिक्षक आयडीसह लॉग इन करा
+            स्वागत आहे! कृपया सुरू करण्यासाठी {teacherStudent.marathi} आयडीसह
+            लॉग इन करा
           </h5>
           <div className="inline-flex form-mode-btn">
-            <h2 id="login-btn-teacher" underline="true">
+            <h2
+              onClick={onTeacherLoginScreen}
+              id="login-btn-teacher"
+              underline={teacherTab}
+            >
               Teacher Log In
             </h2>
             <p>|</p>
-            <h2 id="login-btn-student" underline="false">
+            <h2
+              onClick={onStudentLoginScreen}
+              id="login-btn-student"
+              underline={studentTab}
+            >
               Student Log in
             </h2>
           </div>
@@ -43,22 +82,30 @@ function Login() {
                 <input
                   id="email-address"
                   type="email"
-                  placeholder="Teacher Email Address"
+                  placeholder={teacherStudent.english + " mail ID"}
                 />
                 <input id="password" type="password" placeholder="Password" />
                 <input id="submit" type="submit" value="Log in" />
               </div>
             </form>
             <br />
-            <div className="inline-flex" id="google-sign-in">
-              <img
-                src={GoogleLogoSVG}
-                alt="google icon"
-                width="20rem"
-                id="google-icon"
-              />
-              <input id="g-submit" type="submit" value="      Google sign in" />
-            </div>
+            {googleLoginBtn ? (
+              <div className="inline-flex" id="google-sign-in">
+                <img
+                  src={GoogleLogoSVG}
+                  alt="google icon"
+                  width="20rem"
+                  id="google-icon"
+                />
+                <input
+                  id="g-submit"
+                  type="submit"
+                  value="      Google sign in"
+                />
+              </div>
+            ) : (
+              <></>
+            )}
           </div>
 
           <div className="login-content-student" data-visible="false">
