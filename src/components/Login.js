@@ -4,6 +4,7 @@ import {
   getAuth,
   signInWithPopup,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
 } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
@@ -30,6 +31,21 @@ function Login() {
 
   const [teacherTab, setTeacherTab] = useState("true");
   const [studentTab, setStudentTab] = useState("false");
+
+  const [enteredMail, setEnteredMail] = useState("");
+  const [enteredPass, setEnteredPass] = useState("");
+
+  const onLoginEmailPass = (e) => {
+    e.preventDefault();
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, enteredMail, enteredPass)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const onGoogleLogin = () => {
     const auth = getAuth();
@@ -110,12 +126,29 @@ function Login() {
             <form action="">
               <div className="flex">
                 <input
+                  onChange={(e) => {
+                    setEnteredMail(e.target.value);
+                  }}
+                  value={enteredMail}
                   id="email-address"
                   type="email"
                   placeholder={teacherStudent.english + " mail ID"}
                 />
-                <input id="password" type="password" placeholder="Password" />
-                <input id="submit" type="submit" value="Log in" />
+                <input
+                  onChange={(e) => {
+                    setEnteredPass(e.target.value);
+                  }}
+                  value={enteredPass}
+                  id="password"
+                  type="password"
+                  placeholder="Password"
+                />
+                <input
+                  onClick={onLoginEmailPass}
+                  id="submit"
+                  type="submit"
+                  value="Log in"
+                />
               </div>
             </form>
             <br />
@@ -137,24 +170,6 @@ function Login() {
             ) : (
               <></>
             )}
-          </div>
-
-          <div className="login-content-student" data-visible="false">
-            <form action="">
-              <div className="flex">
-                <input
-                  id="email-address-student"
-                  type="email"
-                  placeholder="Student Email Address"
-                />
-                <input
-                  id="password-student"
-                  type="password"
-                  placeholder="Password"
-                />
-                <input id="submit-student" type="submit" value="Log in" />
-              </div>
-            </form>
           </div>
         </div>
       </div>
