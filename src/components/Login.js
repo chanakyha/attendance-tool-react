@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "../firebase";
 import "./Login.css";
 
 import GoogleLogoSVG from "../SVG/google-logo.svg";
@@ -12,6 +13,18 @@ function Login() {
 
   const [teacherTab, setTeacherTab] = useState("true");
   const [studentTab, setStudentTab] = useState("false");
+
+  const onGoogleLogin = () => {
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
   const onTeacherLoginScreen = () => {
     setTeacherStudent({
@@ -101,6 +114,7 @@ function Login() {
                   id="g-submit"
                   type="submit"
                   value="      Google sign in"
+                  onClick={onGoogleLogin}
                 />
               </div>
             ) : (
