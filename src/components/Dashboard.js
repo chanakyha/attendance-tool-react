@@ -12,8 +12,10 @@ import {
   where,
   onSnapshot,
 } from "../firebase";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+
+import { showToast } from "../functions/function";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -27,7 +29,7 @@ function Dashboard() {
       if (user) {
         setUser(user);
       } else {
-        navigate("/login");
+        navigate("/");
       }
     });
   }, []);
@@ -59,19 +61,6 @@ function Dashboard() {
       .catch((error) => {
         console.log(error);
       });
-  };
-
-  const showToast = (message, type) => {
-    type(message, {
-      position: "top-left",
-      autoClose: 6000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      theme: "colored",
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-    });
   };
 
   return (

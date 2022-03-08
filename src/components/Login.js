@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword,
 } from "../firebase";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import "./Login.css";
 
 import GoogleLogoSVG from "../SVG/google-logo.svg";
