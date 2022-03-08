@@ -8,6 +8,7 @@ import {
 } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { showToast } from "../functions/function";
 import "./Login.css";
 
 import GoogleLogoSVG from "../SVG/google-logo.svg";
@@ -44,7 +45,7 @@ function Login() {
         console.log(result);
       })
       .catch((error) => {
-        console.log(error);
+        showToast("Please Enter the login credentials correctly", toast.error);
       });
   };
 
