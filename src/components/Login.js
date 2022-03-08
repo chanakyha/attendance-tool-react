@@ -41,7 +41,7 @@ function Login() {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, enteredMail, enteredPass)
       .then((result) => {
-        console.log(result);
+        navigate("/");
       })
       .catch((error) => {
         showToast("Please Enter the login credentials correctly", toast.error);
@@ -53,7 +53,7 @@ function Login() {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
-        console.log(result);
+        navigate("/");
       })
       .catch((error) => {
         console.log(error.message);

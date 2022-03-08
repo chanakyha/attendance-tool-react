@@ -1,5 +1,5 @@
 import React from "react";
-import "./Navbar.css";
+import "./TeacherNav.css";
 
 import MainLogoSVG from "../SVG/attendance.svg";
 
@@ -11,7 +11,7 @@ function MainNav(props) {
       <nav className="navbar navbar-light bg-light navbar-expand-lg fixed-top">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
-            <img src={MainLogoSVG} />
+            <img src={MainLogoSVG} /> &nbsp; Teacher's Dashboard
           </a>
           <button
             className="navbar-toggler"
