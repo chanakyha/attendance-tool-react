@@ -1,17 +1,17 @@
 import React from "react";
-import "./TeacherNav.css";
+import "./StudentNav.css";
 
 import MainLogoSVG from "../SVG/attendance.svg";
 
 import { PersonCircle, BoxArrowRight } from "react-bootstrap-icons";
 
-function TeacherNav(props) {
+function StudentNav(props) {
   return (
     <div className="navbar">
       <nav className="navbar navbar-light bg-light navbar-expand-lg fixed-top">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
-            <img src={MainLogoSVG} /> &nbsp; Teacher's Dashboard
+            <img src={MainLogoSVG} /> &nbsp; Student's Dashboard
           </a>
           <button
             className="navbar-toggler"
@@ -48,7 +48,7 @@ function TeacherNav(props) {
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="#">
-                    Record Attendance
+                    View Attendance
                   </a>
                 </li>
                 <li className="nav-item dropdown">
@@ -73,12 +73,12 @@ function TeacherNav(props) {
                   >
                     <li>
                       <a className="dropdown-item" href="#">
-                        Your Class
+                        Apply Medical Leave
                       </a>
                     </li>
                     <li>
                       <a className="dropdown-item" href="#">
-                        Your Students
+                        Apply OD
                       </a>
                     </li>
                     <li>
@@ -109,4 +109,4 @@ function TeacherNav(props) {
   );
 }
 
-export default TeacherNav;
+export default StudentNav;

@@ -1,0 +1,11 @@
+.navbar {
+  margin-bottom: 2.5em;
+}
+.navbar-brand > img {
+  width: 2.1em;
+  border-radius: 50%;
+}
+.avatar {
+  width: 1.8em;
+  border-radius: 50%;
+}

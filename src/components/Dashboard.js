@@ -17,6 +17,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 import { showToast } from "../functions/function";
+import StudentDash from "./StudentDash";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -62,7 +63,7 @@ function Dashboard() {
           navigate("/login");
           setTeacher(null);
           setStudent(null);
-          showToast("The Email Address IS Invalid", toast.error);
+          showToast("The Email Address Is Invalid", toast.error);
           onSignOut();
         }
       } else {
@@ -91,7 +92,7 @@ function Dashboard() {
           onSignOut={onSignOut}
         />
       ) : (
-        <h1>This is Students DB</h1>
+        <StudentDash email={user.email} onSignOut={onSignOut} />
       )}
     </div>
   );
