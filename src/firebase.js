@@ -5,6 +5,7 @@ import {
   query,
   where,
   onSnapshot,
+  getDocs,
 } from "firebase/firestore";
 import {
   GoogleAuthProvider,
@@ -44,4 +45,5 @@ export {
   query,
   where,
   onSnapshot,
+  getDocs,
 };
