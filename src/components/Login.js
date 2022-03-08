@@ -16,15 +16,6 @@ import GoogleLogoSVG from "../SVG/google-logo.svg";
 function Login() {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        navigate("/");
-      }
-    });
-  }, []);
-
   const [teacherStudent, setTeacherStudent] = useState({
     english: "Teacher",
     marathi: "शिक्षक",
@@ -36,6 +27,14 @@ function Login() {
 
   const [enteredMail, setEnteredMail] = useState("");
   const [enteredPass, setEnteredPass] = useState("");
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        navigate("/");
+      }
+    });
+  }, []);
 
   const onLoginEmailPass = (e) => {
     e.preventDefault();
