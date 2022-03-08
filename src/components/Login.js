@@ -87,7 +87,7 @@ function Login() {
           <h1>Attendance Tool</h1>
           <p>
             This is a student attendance tool made under Smart India Hackathon
-            2022 for project statement given by Government of Maharashtra{" "}
+            2022 for project statement given by Government of Maharashtra
           </p>
           <h1>उपस्थिती तंत्रज्ञान</h1>
           <p>
