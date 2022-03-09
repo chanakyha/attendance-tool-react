@@ -1,7 +1,7 @@
 const showToast = (message, type) => {
   type(message, {
     position: "top-left",
-    autoClose: 6000,
+    autoClose: 4000,
     hideProgressBar: true,
     closeOnClick: true,
     theme: "colored",
