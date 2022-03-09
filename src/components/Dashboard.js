@@ -84,6 +84,7 @@ function Dashboard() {
     <div>
       {[teacher, student] != [null, null] && teacher == 1 ? (
         <TeacherDash
+          userEmail={user.email}
           displayName={user.displayName}
           photoURL={user.photoURL}
           onSignOut={onSignOut}
@@ -93,7 +94,7 @@ function Dashboard() {
       ) : (
         <div style={{ height: "100%" }} className="spinner__container">
           <div
-            className="spinner-grow text-success"
+            className="spinner-border text-success"
             style={{ width: "10rem", height: "10rem" }}
             role="status"
           >

@@ -42,12 +42,21 @@ function TeacherNav(props) {
             <div className="offcanvas-body">
               <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="#">
+                  <a
+                    style={{ cursor: "pointer" }}
+                    className="nav-link active"
+                    aria-current="page"
+                    onClick={() => props.setScreen("dashboard")}
+                  >
                     Dashboard
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <a
+                    style={{ cursor: "pointer" }}
+                    className="nav-link"
+                    onClick={() => props.setScreen("recAttendance")}
+                  >
                     Record Attendance
                   </a>
                 </li>
@@ -72,12 +81,20 @@ function TeacherNav(props) {
                     aria-labelledby="offcanvasNavbarDropdown"
                   >
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <a
+                        style={{ cursor: "pointer" }}
+                        className="dropdown-item"
+                        onClick={() => props.setScreen("class")}
+                      >
                         Your Class
                       </a>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <a
+                        style={{ cursor: "pointer" }}
+                        className="dropdown-item"
+                        onClick={() => props.setScreen("students")}
+                      >
                         Your Students
                       </a>
                     </li>
@@ -85,7 +102,11 @@ function TeacherNav(props) {
                       <hr className="dropdown-divider" />
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <a
+                        style={{ cursor: "pointer" }}
+                        className="dropdown-item"
+                        onClick={() => props.setScreen("details")}
+                      >
                         Your Details
                       </a>
                     </li>
