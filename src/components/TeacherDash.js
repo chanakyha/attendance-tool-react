@@ -31,7 +31,7 @@ function TeacherDash({ userEmail, displayName, photoURL, onSignOut }) {
       />
       {screen == "details" ? (
         <TeacherYourDetails photoURL={photoURL} teacherData={teacherData[0]} />
-      ) : screen == "details" ? (
+      ) : screen == "dashboard" ? (
         <h1>The Dashboard</h1>
       ) : (
         <h1>Nothing</h1>
