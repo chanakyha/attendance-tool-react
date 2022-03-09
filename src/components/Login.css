@@ -106,6 +106,7 @@ input[type="number"] {
   text-align: center;
   border: 1px solid black;
   border-radius: 7px;
+  padding: 2em;
 }
 .login-content-teacher {
   padding: 1rem;

@@ -162,9 +162,13 @@ function Login() {
                   id="google-icon"
                 />
                 <input
+                  style={{
+                    paddingLeft: "2em",
+                    marginLeft: "0.35em",
+                  }}
                   id="g-submit"
                   type="submit"
-                  value="      Google sign in"
+                  value="Google sign in"
                   onClick={onGoogleLogin}
                 />
               </div>
