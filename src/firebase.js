@@ -6,6 +6,7 @@ import {
   where,
   onSnapshot,
   getDocs,
+  collectionGroup,
 } from "firebase/firestore";
 import {
   GoogleAuthProvider,
@@ -46,4 +47,5 @@ export {
   where,
   onSnapshot,
   getDocs,
+  collectionGroup,
 };

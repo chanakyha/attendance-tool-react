@@ -11,6 +11,7 @@ import {
   query,
   where,
   onSnapshot,
+  collectionGroup,
   getDocs,
 } from "../firebase";
 import { toast } from "react-toastify";
@@ -23,60 +24,56 @@ function Dashboard() {
   const navigate = useNavigate();
 
   const [user, setUser] = useState({});
-  const [teacherData, setTeacherData] = useState({});
 
   const [teacher, setTeacher] = useState(null);
   const [student, setStudent] = useState(null);
+
+  const getTeacherFireData = async (email) => {
+    const querySnapshot = await getDocs(
+      query(collection(db, "teachers"), where("email", "==", email))
+    );
+
+    return querySnapshot;
+  };
+  const getStudentFireData = async (email) => {
+    const querySnapshot = await getDocs(
+      query(collection(db, "students"), where("email", "==", email))
+    );
+
+    return querySnapshot;
+  };
 
   useEffect(() => {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
-        const unsubscribe = onSnapshot(
-          query(collection(db, "teachers"), where("email", "==", user.email)),
-          (querySnapshot) => {
-            if (querySnapshot.docs.length) {
-              setTeacher(1);
-            } else {
-              setTeacher(0);
-            }
-          }
+        getTeacherFireData(user.email).then((res) =>
+          setTeacher(res.docs.length)
         );
-        const unsubscribe1 = onSnapshot(
-          query(collection(db, "students"), where("email", "==", user.email)),
-          (querySnapshot) => {
-            if (querySnapshot.docs.length) {
-              setStudent(1);
-            } else {
-              setStudent(0);
-            }
-          }
+        getStudentFireData(user.email).then((res) =>
+          setStudent(res.docs.length)
         );
-
-        if (
-          teacher != null &&
-          student != null &&
-          teacher == 0 &&
-          student == 0
-        ) {
-          navigate("/login");
-          setTeacher(null);
-          setStudent(null);
-          showToast("The Email Address Is Invalid", toast.error);
-          onSignOut();
-        }
       } else {
         navigate("/login");
       }
     });
+  }, [user]);
+
+  useEffect(() => {
+    if (teacher != null && student != null) {
+      if (student === 0 && teacher === 0) {
+        onSignOut();
+        showToast("The Email Address is Invalid !!", toast.error);
+      }
+    }
   }, [teacher, student]);
 
   const onSignOut = () => {
     const auth = getAuth();
     signOut(auth)
-      .then(() => {
-        navigate("/login");
+      .then((res) => {
+        console.log(res);
       })
       .catch((error) => {
         console.log(error);
@@ -91,8 +88,18 @@ function Dashboard() {
           photoURL={user.photoURL}
           onSignOut={onSignOut}
         />
-      ) : (
+      ) : [teacher, student] != [null, null] && student == 1 ? (
         <StudentDash email={user.email} onSignOut={onSignOut} />
+      ) : (
+        <div style={{ height: "100%" }} className="spinner__container">
+          <div
+            className="spinner-grow text-success"
+            style={{ width: "10rem", height: "10rem" }}
+            role="status"
+          >
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
       )}
     </div>
   );
